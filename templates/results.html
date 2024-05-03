@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/main.css">
+    <title>Video</title>
+    <link rel="shortcut icon" type="image/png" href="../static/fev1M1.png">
+    <style>
+        /* Increase text size and style */
+        body {
+            font-size: 18px; /* Adjust this value as needed */
+            font-family: Arial, sans-serif; /* Change the font family as needed */
+            color: #333; /* Change text color if needed */
+        }
+
+        /* Adjust specific elements as needed */
+        h1 {
+            font-size: 30px; /* Adjust this value as needed */
+            text-align: center; /* Center align the heading */
+            margin-top: 20px; /* Add margin if needed */
+            padding: 10px; /* Add padding around the text */
+            border: 2px solid #ccc; /* Add border around the text */
+            border-radius: 5px; /* Add rounded corners to the border */
+            margin-left: 50px; /* Add left margin */
+            margin-right: 50px;
+        }
+
+        /* Style for navigation bar */
+        nav {
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        /* Style for the container box */
+        #box_div {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        /* Style for the quote box */
+        #quote_box {
+            font-family: "Times New Roman", Times, serif; /* Change the font family */
+            color: #008DDA; /* Change text color to red */
+        }
+
+        /* Hide the quote initially */
+        #quote_box {
+            opacity: 0;
+        }
+
+        /* Fade in effect for the quote */
+        #quote_box.fade-in {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="index resultpage">   
+    <nav>
+        <h1>{{ constant_message }}</h1> <!-- Display constant message here -->
+        <h1 id="quote_box">{{ quote }}</h1> <!-- Display quote here -->
+    </nav>
+
+    <div id="box_div" class="detail">
+        {% for id in video_ids %} 
+        <iframe width="30%" height="380" src="https://www.youtube.com/embed/{{id}}" frameborder="0" allowfullscreen id="box_frame" style="padding:1rem 1rem"></iframe>
+        {% endfor %}
+    </div>
+
+    <!-- JavaScript to add fade-in class to the quote box after a delay -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(function() {
+                document.getElementById('quote_box').classList.add('fade-in');
+            }, 1000); // Adjust the delay (in milliseconds) as needed
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/main.css">
+    <title>Songs</title>
+    <link rel="shortcut icon" type="image/png" href="../static/fev1M1.png">
+    <style>
+        /* Increase text size and style */
+        body {
+            font-size: 18px; /* Adjust this value as needed */
+            font-family: Arial, sans-serif; /* Change the font family as needed */
+            color: #333; /* Change text color if needed */
+        }
+
+        /* Adjust specific elements as needed */
+        h1 {
+            font-size: 30px; /* Adjust this value as needed */
+            text-align: center; /* Center align the heading */
+            margin-top: 20px; /* Add margin if needed */
+            padding: 10px; /* Add padding around the text */
+            border: 2px solid #ccc; /* Add border around the text */
+            border-radius: 5px; /* Add rounded corners to the border */
+            margin-left: 50px; /* Add left margin */
+            margin-right: 50px; /*
+            transition: opacity 0.5s ease-in-out; 
+        }
+        #quote_box {
+            font-family: "Times New Roman", Times, serif; /* Change the font family */
+        }
+
+        /* Style for navigation bar */
+        nav {
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        /* Style for the container box */
+        #box_div {
+            text-align: center;
+            margin-top: 20px;
+        }
+        h1:nth-child(2) {
+            font-family: "Times New Roman", Times, serif; /* Change font style */
+            color: blue; /* Change text color */
+            opacity: 0;
+        }
+        h1:nth-child(2).fade-in {
+            opacity: 1; /* Change opacity to 1 for fade-in effect */
+        }
+
+
+        /* Add more styles for other elements if needed */
+    </style>
+</head>
+<body class="index resultpage">
+    <nav>
+        <h1>{{ constant_message }}</h1>  <!-- Display constant message here -->
+        <h1 id="quote_box">{{ quote }}</h1> <!-- Display emotion quote here -->
+    </nav>
+
+    <div id="box_div">
+        {% for id in music_ids %} 
+        <iframe src="https://open.spotify.com/embed/track/{{id}}?utm_source=generator" width="30%" height="380" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" id='box_frame' style="padding:1rem 1rem"></iframe>
+        {% endfor %}
+    </div>
+    <script>
+        // JavaScript to add fade-in class to the second h1 element after a delay
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(function() {
+                document.querySelector('h1:nth-child(2)').classList.add('fade-in');
+            }, 1000); // Adjust the delay (in milliseconds) as needed
+        });
+    </script>
+</body>
+</html>
